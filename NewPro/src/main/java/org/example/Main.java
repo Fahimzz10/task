@@ -4,29 +4,42 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static WebDriver driver;
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
         chrome_launch();
-        open_website();
+        //open_website();
+        //select_checkbox();
+        //add_cart();
+        udemy_Assingment();
+
 
 
     }
-    public static void chrome_launch(){
-        System.setProperty("web-driver.chrome.driver","D:\\Automation\\Automation2\\NewPro\\src\\main\\resources\\chromedriver.exe");
+
+    public static void chrome_launch() {
+        System.setProperty("web-driver.chrome.driver", "D:\\Automation\\Automation2\\NewPro\\src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
-    public static void open_website(){
+
+    public static void open_website() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://test-app.chargeonsite.com/customer/login");
         driver.findElement(By.cssSelector("input[placeholder=Email]")).sendKeys("sabihatesting.01@gmail.com");
         driver.findElement(By.cssSelector("input[placeholder=Password]")).sendKeys("T7777777");
         driver.findElement(By.cssSelector("button[type=submit]")).click();
+//        for (int i = 0; i <3 ; i++){
+//            driver.findElement(By.xpath("//*[@id=\"map\"]/div/div/div[13]/div/div/div/button[1]")).click();
+//            //Thread.sleep(2000);
+//        }
         driver.findElement(By.xpath("//*[@id=\"map\"]/div/div/div[2]/div[2]/div/div[3]/div[3]/img")).click();
         //driver.findElement(By.cssSelector("input[type=text]")).sendKeys("Messi");
         //driver.findElement(By.xpath("//div[@class='lJ9FBc']//input[@value='Google Search']")).click();
@@ -39,6 +52,90 @@ public class Main {
 //            if (name.contains("Cucumber")){
 //                driver.findElements(By.xpath("//*[@id=\"root\"]/div/div[1]/div/div[3]/div[3]/button"));
 //            }
- //       }
+        //       }
     }
+
+    public static void select_checkbox(){
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+          //boolean isnotchecked = driver.findElement(By.cssSelector("input[type=checkbox]")).isSelected();
+//        System.out.println(isnotchecked);
+//        if (isnotchecked=true){
+//            driver.findElement(By.xpath("//*[@id=\"checkBoxOption1\"]")).click();
+//
+//        }
+        //count the number of checkbox
+//        int sizeofCheckbox= driver.findElements(By.cssSelector("input[type=checkbox]")).size();
+//        System.out.println(sizeofCheckbox);
+
+
+        //click all checkboxes
+        List <WebElement> AllCheckboxes =  driver.findElements(By.cssSelector("input[type=checkbox]"));
+
+        int size = AllCheckboxes.size();
+        System.out.println(size);
+
+        for(int i = 0; i<size; i++) {
+
+            String value = AllCheckboxes.get(i).getAttribute("option1");
+
+            AllCheckboxes.get(i).click();
+        }
+
+        //check checkbox is selected or not
+        WebElement chkbox = driver.findElement(By.cssSelector("input[type=checkbox]"));
+
+        if(chkbox.isSelected()) {
+
+            System.out.println("Checkbox is ON");
+        }
+        else {
+
+
+            System.out.println("Checkbox is Off");
+        }
+
+
+
+    }
+    public static void udemy_Assingment(){
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        WebElement checkbox = driver.findElement(By.cssSelector("input[type=checkbox]"));
+        checkbox.click();
+
+        //verify
+        if(checkbox.isSelected()) {
+
+            System.out.println("Successfully Checked");
+        }
+        else {
+            System.out.println("unchecked");
+        }
+        WebElement checkbox1 = driver.findElement(By.cssSelector("input[type=checkbox]"));
+        checkbox1.click();
+
+        //verify
+        if(checkbox1.isSelected()) {
+
+            System.out.println("Successfully Checked");
+        }
+        else
+        {
+            System.out.println("unchecked");
+        }
+
+
+
+//
+//        }
+
+    }
+
 }
+
+
+
+
+
+
