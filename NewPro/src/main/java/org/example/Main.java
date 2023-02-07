@@ -18,7 +18,10 @@ public class Main {
         //open_website();
         //select_checkbox();
         //add_cart();
-        udemy_Assingment();
+        //udemy_Assingment();
+        assignment_alternative();
+
+
 
 
 
@@ -98,6 +101,7 @@ public class Main {
 
 
     }
+//  Question: Check the first  Checkbox and verify if it is successfully checked and Uncheck it again to verify if it is successfully Unchecked
     public static void udemy_Assingment(){
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
@@ -125,12 +129,27 @@ public class Main {
             System.out.println("unchecked");
         }
 
-
-
-//
-//        }
+        //count the number of checkbox
+        int sizeofCheckbox= driver.findElements(By.cssSelector("input[type=checkbox]")).size();
+        System.out.println(sizeofCheckbox);
 
     }
+
+                                          // Alternate way to solve the assignment1
+    public static void assignment_alternative(){
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        driver.findElement(By.id("checkBoxOption1")).click();
+
+        System.out.println(driver.findElement(By.id("checkBoxOption1")).isSelected()); //Should Print True
+
+        driver.findElement(By.id("checkBoxOption1")).click();
+
+        System.out.println(driver.findElement(By.id("checkBoxOption1")).isSelected()); //Should Print false
+
+    }
+
+
 
 }
 
