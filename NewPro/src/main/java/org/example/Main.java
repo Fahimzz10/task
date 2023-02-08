@@ -19,7 +19,8 @@ public class Main {
         //select_checkbox();
         //add_cart();
         //udemy_Assingment();
-        assignment_alternative();
+        //assignment_alternative();
+        handling_alerts();
 
 
 
@@ -148,6 +149,22 @@ public class Main {
         System.out.println(driver.findElement(By.id("checkBoxOption1")).isSelected()); //Should Print false
 
     }
+    public static void handling_alerts(){
+
+        String text="Rahul";
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        driver.findElement(By.id("name")).sendKeys(text);
+        driver.findElement(By.cssSelector("[id='alertbtn']")).click();
+        System.out.println(driver.switchTo().alert().getText());
+        driver.switchTo().alert().accept();
+        driver.findElement(By.id("confirmbtn")).click();
+        System.out.println(driver.switchTo().alert().getText());
+
+        driver.switchTo().alert().dismiss();
+
+    }
+
+
 
 
 
