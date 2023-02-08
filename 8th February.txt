@@ -1,0 +1,5 @@
+
+
+1. Implicit wait waits for globally
+2. explicit wait appllied for specific cases
+3. Thread.sleep is not part of selenium webdriver. It is waiting till nth number of time
