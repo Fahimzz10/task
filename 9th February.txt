@@ -1,0 +1,2 @@
+Keyboard events are passed with
+ sendkeys method
