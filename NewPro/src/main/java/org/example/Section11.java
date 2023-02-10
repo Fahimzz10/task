@@ -20,6 +20,7 @@ public class Section11 {
         //Footer_linkcount();
         //click_eachlink();
         //rowlinkcout_footer();
+        //pagename_link();
         //assignment_done();
         select_date();
 
@@ -54,28 +55,56 @@ public class Section11 {
 
     //Click on the each link of the footer and get the title of each page
 
-    public static void click_eachlink(){
+    public static void click_eachlink() {
         driver.get("http://qaclickacademy.com/practice.php");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        WebElement footer= driver.findElement(By.id("gf-BIG"));
+        WebElement footer = driver.findElement(By.id("gf-BIG"));
         WebElement footercolumn = driver.findElement(By.xpath("//table/tbody/tr/td[1]/ul"));
-
-        for (int i=1;i<footercolumn.findElements(By.tagName("a")).size();i++){
-
-            String clickonlink = Keys.chord(Keys.CONTROL,Keys.ENTER);
+        for (int i = 1; i < footercolumn.findElements(By.tagName("a")).size(); i++) {
+            String clickonlink = Keys.chord(Keys.CONTROL, Keys.ENTER);
             //footercolumn.findElements(By.tagName("a")).get(i).click();
             footercolumn.findElements(By.tagName("a")).get(i).sendKeys(clickonlink);
         }
         Set url = driver.getWindowHandles();
-        Iterator <String> it = url.iterator();
-
-        while(it.hasNext()){
+        Iterator<String> it = url.iterator();
+        while (it.hasNext()) {
             driver.switchTo().window(it.next());
             System.out.println(driver.getTitle());
         }
-
-
     }
+
+    public static void pagename_link(){
+            driver.get("http://qaclickacademy.com/practice.php");
+            System.out.println(driver.findElements(By.tagName("a")).size());
+            WebElement footerdriver=driver.findElement(By.id("gf-BIG"));// Limiting webdriver scope
+            System.out.println(footerdriver.findElements(By.tagName("a")).size());
+            WebElement coloumndriver=footerdriver.findElement(By.xpath("//table/tbody/tr/td[1]/ul"));
+            System.out.println(coloumndriver.findElements(By.tagName("a")).size());
+
+            // Verifying: click on each link in the coloumn and check if the pages are opening-
+            for(int i=1;i<coloumndriver.findElements(By.tagName("a")).size();i++)
+            {
+
+                String clickonlinkTab=Keys.chord(Keys.CONTROL,Keys.ENTER);
+
+                coloumndriver.findElements(By.tagName("a")).get(i).sendKeys(clickonlinkTab);
+                //Thread.sleep(5000L);
+
+            }// opening all the tabs
+            Set<String> abc=driver.getWindowHandles();//4
+            Iterator<String> it=abc.iterator();
+
+            while(it.hasNext())
+            {
+
+                driver.switchTo().window(it.next());
+                System.out.println(driver.getTitle());
+
+            }
+        }
+
+
+
     public static void assignment_done(){
         driver.get("http://qaclickacademy.com/practice.php");
         driver.findElement(By.id("checkBoxOption3")).click();
