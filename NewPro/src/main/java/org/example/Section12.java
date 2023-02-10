@@ -21,8 +21,8 @@ public class Section12 {
         chrome_launch();
         //Section12_Assignment();
         //section_assignment2();
-        section13_ss();
-        //search_filter();
+        //section13_ss();
+        search_filter();
 
 
 
@@ -72,32 +72,7 @@ public class Section12 {
         FileUtils.copyFile(src,new File("D:\\New folder\\screen2.png"));
         driver.quit();
     }
-    public static void search_filter(){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get("https://test-admin.chargeonsite.com/login");
-        driver.findElement(By.cssSelector("input[placeholder=Email]")).sendKeys("jo@email.com");
-        driver.findElement(By.cssSelector("input[placeholder=Password]")).sendKeys("2&57DyhUTH1c");
-        driver.findElement(By.cssSelector("button[type=submit]")).click();
-        // Locate the dropdown element
-        driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][contains(.,'Properties')]")).click();
-        driver.findElement(By.cssSelector("li[data-menu-id=rc-menu-uuid-63179-3-33]")).click();
-//        WebElement dropdown = driver.findElement(By.cssSelector("ul[class=ant-menu ant-menu-sub ant-menu-inline]"));
-//        Select menu= new Select(dropdown);
-//        menu.selectByVisibleText("Chargers");
-        //identify menu
-//        WebElement n=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][contains(.,'Properties')]"));
-//        // Create a new instance of the Select class
-//        // object of Actions with method moveToElement
-//        Actions a = new Actions(driver);
-//        a.moveToElement(n).click().perform();
-        //driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][contains(.,'Properties')]")).click();
-        driver.findElement(By.xpath("Xpath /html/body/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div[2]/div/div/div")).sendKeys("My");
-        driver.findElement(By.xpath("Xpath /html/body/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div[2]/div/div/div")).sendKeys(Keys.DOWN);
 
-
-
-    }
 
 
 }
