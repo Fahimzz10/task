@@ -85,12 +85,8 @@ public class Section12 {
     }
     
     public static void soft_assert() throws IOException {
-        System.setProperty("web-driver.chrome.driver", "D:\\Automation\\Browsers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        List<WebElement> links=   driver.findElements(By.cssSelector("li[class='gf-li'] a"));
+        List<WebElement> links= driver.findElements(By.cssSelector("li[class='gf-li'] a"));
         SoftAssert a =new SoftAssert();
         for(WebElement link : links) {
             String url= link.getAttribute("href");
