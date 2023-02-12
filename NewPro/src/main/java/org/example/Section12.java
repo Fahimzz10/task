@@ -72,6 +72,15 @@ public class Section12 {
         FileUtils.copyFile(src,new File("D:\\New folder\\screen2.png"));
         driver.quit();
     }
+    public static void http_request() throws InterruptedException, IOException{
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        String url = driver.findElement(By.cssSelector("a[href*='brokenlink']")).getAttribute("href");
+        HttpURLConnection conn =(HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+        int responsecode = conn.getResponseCode();
+        System.out.println(responsecode);
+    }
 
 
 
